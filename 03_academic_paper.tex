@@ -1,0 +1,787 @@
+% ============================================================
+%  03_academic_paper.tex
+%  Autonomy, Capacity, and the Right to Exit
+%  ACADEMIC PAPER --- For philosophy, bioethics, and law journals
+%  Justin Bogner, 2026
+%  Compile: xelatex 03_academic_paper.tex (twice)
+% ============================================================
+
+\documentclass[11pt, letterpaper]{article}
+\usepackage{campaign}
+\usepackage{xspace}
+
+\campaignheader%
+  {Autonomy, Capacity, and the Right to Exit}%
+  {Academic Paper --- Bogner, 2026}
+
+\geometry{
+  letterpaper,
+  left=1.2in, right=1.2in,
+  top=1.1in, bottom=1.2in,
+  headheight=22pt
+}
+
+% Journal-style: numbered sections, normal alignment
+\titleformat{\section}
+  {\sffamily\large\bfseries\color{C@accent}}
+  {\thesection.}{0.6em}{}[{\color{C@rulegray}\titlerule[0.5pt]}]
+
+\titleformat{\subsection}
+  {\sffamily\normalsize\bfseries\color{C@darkgray}}
+  {\thesubsection}{0.5em}{}
+
+\titleformat{\subsubsection}
+  {\sffamily\small\bfseries\itshape\color{C@midgray}}
+  {\thesubsubsection}{0.5em}{}
+
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+
+\begin{document}
+
+% ── TITLE BLOCK ──────────────────────────────────────────────
+\thispagestyle{empty}
+\vspace*{0.6cm}
+
+{\raggedright
+{\sffamily\LARGE\bfseries\color{C@accent}
+Autonomy, Capacity, and the Right to Exit: \\[0.3em]
+\large The Case for a Sovereignty Model in Non-Terminal Medical Aid in Dying}
+\par}
+
+\vspace{0.6em}
+{\color{C@rulegray}\hrule height 0.8pt}
+\vspace{0.5em}
+
+{\sffamily\small\color{C@midgray}
+\textbf{Justin Bogner} \\
+Independent Scholar \\
+2026 \\[0.4em]
+\textit{Keywords:} medical aid in dying, decisional capacity, bodily autonomy,
+informed refusal, disability rights, MAiD, sovereignty model, paternalism
+}
+
+\vspace{0.5em}
+{\color{C@rulegray}\hrule height 0.4pt}
+\vspace{1.2em}
+
+% ── ABSTRACT ─────────────────────────────────────────────────
+\begin{policybox}[title={\sffamily\bfseries\small\color{C@accent} Abstract}]
+Current Medical Aid in Dying (MAiD) frameworks in most Western jurisdictions restrict
+eligibility to persons with terminal diagnoses or demonstrable ``unbearable'' suffering.
+This paper argues that both criteria are philosophically incoherent and clinically
+unjustifiable when evaluated against the informed refusal doctrine already operative in
+medical law. The operative criterion for MAiD eligibility should be decisional
+capacity---understood not as the absence of suffering or the presence of terminal
+diagnosis, but as the demonstrated ability to understand and authentically refuse
+alternatives. Drawing on the informed refusal principle (\textit{Carter v.\ Canada},
+2015; Beauchamp \& Childress, 2019), the paper proposes a Sovereignty Model that
+replaces the Protectionist Model governing current frameworks. The paper then addresses
+in detail the principal philosophical objections to this position: the depressive
+incapacity objection, the disability rights critique (DAWN Canada; UN Special Rapporteur
+2019), and the slippery slope argument. It concludes by arguing that an enforceable
+right to exit, combined with mandatory documentation of socioeconomic drivers, functions
+as a structural forcing function for investment in dignified life---a consequence that
+the Protectionist Model demonstrably fails to produce.
+\end{policybox}
+
+\bigskip
+
+% ============================================================
+\section{Introduction}
+% ============================================================
+
+Medical Aid in Dying occupies an unusual position in contemporary bioethical and legal
+discourse: a domain in which the ordinary presumption in favor of patient autonomy is
+systematically overridden by eligibility requirements that have no analogue elsewhere in
+medical practice. A competent adult may refuse mechanical ventilation, dialysis, surgical
+intervention, or artificial nutrition without prior utilization, without demonstration of
+suffering, and without terminal prognosis.\footnote{%
+  The right to refuse treatment is established across Western jurisdictions. See
+  \textit{Cruzan v.\ Director, Missouri Dept.\ of Health}, 497 U.S.\ 261 (1990)
+  (United States); \textit{Malette v.\ Shulman} (1990), 72 O.R.\ (2d) 417 (Canada);
+  \textit{Re T (Adult: Refusal of Treatment)} [1992] 4 All ER 649 (United Kingdom).}
+The same person cannot, in most jurisdictions, access MAiD without satisfying one or both
+of two additional conditions: a terminal prognosis within a defined survival window, or
+externally validated ``unbearable'' suffering.\footnote{%
+  For the United States, the controlling constitutional precedents are
+  \textit{Washington v.\ Glucksberg}, 521 U.S.\ 702 (1997), which held there is no
+  fundamental right to physician-assisted suicide under the substantive Due Process Clause,
+  and \textit{Vacco v.\ Quill}, 521 U.S.\ 793 (1997), which held that the equal protection
+  clause does not require treating treatment refusal and assisted dying identically. This
+  paper engages both holdings in Section~3.3. The short version: the Sovereignty Model's
+  constitutional argument rests on the state-created-danger doctrine rather than a new
+  substantive due process claim, and \textit{Vacco}'s rational basis premise is undermined
+  by the Causation Fiction argument developed below. For non-US jurisdictions, see
+  \textit{Carter v.\ Canada} (2015) and \textit{Re B} (2002).}
+
+This asymmetry is not philosophically justified. It is historically contingent: a product
+of the political compromises under which the first MAiD statutes were enacted rather than
+of any principled distinction between the rights engaged. This paper argues for its
+elimination and for its replacement with a \textbf{Sovereignty Model} in which the sole
+eligibility criterion is decisional capacity, administered through a rigorous two-stage
+assessment and mandatory waiting period.
+
+The argument proceeds in five stages. Section~2 characterizes the current frameworks as
+a Protectionist Model and identifies its philosophical deficiencies. Section~3 develops
+the Sovereignty Model, grounded in the informed refusal doctrine and bodily
+self-determination jurisprudence. Section~4 addresses the two-stage assessment protocol.
+Section~5 engages the principal philosophical objections. Section~6 presents the systemic
+consequences of the Sovereignty Model, including the forcing function argument.
+Section~7 concludes.
+
+% ============================================================
+\section{The Protectionist Model and Its Deficiencies}
+% ============================================================
+
+\subsection{The Suffering Criterion}
+
+The requirement that a MAiD applicant demonstrate ``unbearable'' or ``intolerable''
+suffering before eligibility is recognized rests on an implicit claim: that suffering
+of sufficient magnitude provides the normative warrant for the right to die, where
+autonomous preference alone does not. This claim is incoherent on its own terms.
+
+First, ``unbearable'' is not a clinical category. It is a subjective threshold
+individuated by psychology, cultural background, pain tolerance, prior experience,
+and available support. To adjudicate on its presence requires the evaluating clinician
+to override the patient's own report in favor of an external standard---precisely the
+paternalism that medical ethics has otherwise abandoned.\footnote{%
+  Beauchamp and Childress (2019, pp.\ 99--148) identify four conditions for competent
+  refusal: understanding, appreciation, reasoning, and voluntariness. None requires
+  external validation of the subjective quality of the patient's experience.}
+
+Second, the criterion creates a performance requirement. The more articulately a person
+can describe their distress in terms legible to evaluators, the more likely they are
+to receive access.\footnote{%
+  This dynamic is well-documented in the disability literature. See Silvers (1998,
+  pp.\ 214--216) on the ``articulate sufferer'' problem in medical decision-making.}
+A person who has formed a settled, philosophically coherent preference for death but
+who presents as composed and functional may be denied access on the grounds that their
+suffering is not sufficiently demonstrable. This is not a rights determination. It is
+an aesthetic one.
+
+Third, and most fundamentally: the suffering criterion conflates sympathy with rights.
+It asserts that autonomous preference is insufficient for eligibility, and that the
+state must additionally find the preference sympathetically intelligible before
+recognizing it. This is not the standard that governs any other exercise of medical
+autonomy.
+
+\subsection{The Terminal Diagnosis Requirement}
+
+The terminal-diagnosis requirement, operative in the United States and historically
+in Canada's Track~1, holds that MAiD eligibility requires a prognosis of death within
+a defined survival window (typically six months). The philosophical justification
+offered is typically that a person who will die in any case has a diminished interest
+in continued existence that makes exit a less weighty decision.
+
+This reasoning fails on inspection. The relevant moral question is not \textit{how soon}
+a person will die, but whether they possess the autonomous capacity to determine when
+and how. A person with a terminal prognosis of five months and a person with a
+non-terminal but severely degenerative condition producing equivalent functional
+limitation are not meaningfully different in terms of their interest in self-determination.
+To treat them differently is to make a rights determination on the basis of prognosis
+rather than personhood.\footnote{%
+  This argument was substantially accepted by the Supreme Court of Canada in
+  \textit{Carter v.\ Canada (AG)}, 2015 SCC 5, which held that the criminal prohibition
+  on assisted dying infringed s.\ 7 of the \textit{Charter} (life, liberty, and
+  security of the person) as applied to ``grievous and irremediable medical conditions.''
+  The Court declined to limit its holding to terminal cases.}
+
+\subsection{Liability Theater}
+
+Psychiatric response to suicidal ideation in most institutional settings functions
+primarily as liability management rather than therapeutic care. The operational
+objective is avoiding institutional responsibility for a death during treatment, not
+resolving the conditions that produced the crisis. The resulting cycle---pressured
+hospitalization, safety contracts of no demonstrated clinical value,\footnote{%
+  No-suicide contracts (NSCs) lack empirical support for efficacy and have been
+  associated with false reassurance in clinical settings. See Drew (2001) and
+  Stanford, Goetz, and Bloom (1994) for systematic review.}
+premature discharge into unchanged material conditions---preserves biological
+continuity while suspending autonomous agency.
+
+This is not treatment. It is an administrative loop designed to defer rather than
+resolve, justified by institutional risk management rather than patient welfare.
+
+% ============================================================
+\section{The Sovereignty Model}
+% ============================================================
+
+\subsection{Bodily Self-Determination}
+
+The Sovereignty Model rests on a foundational claim in medical jurisprudence that is
+not, in itself, contested: that competent adults possess the right to refuse any
+medical treatment, including life-sustaining treatment, on the basis of informed
+refusal alone. This right is established in statute and case law across all Western
+democratic jurisdictions.\footnote{%
+  See \textit{Cruzan} (US); \textit{Re B (Adult: Refusal of Medical Treatment)}
+  [2002] 2 All ER 449 (UK); \textit{Malette} (Canada). The Canadian \textit{Charter},
+  s.\ 7 has been consistently interpreted to protect bodily integrity against
+  non-consensual medical intervention.}
+
+The Sovereignty Model identifies the following argumentative gap in current MAiD law:
+if persons may refuse life-sustaining treatment and thereby determine the
+circumstances and timing of their death, they already possess in principle the right
+to determine the boundaries of their existence. The question is not whether this right
+exists; it is why its exercise is suspended the moment it takes the form of
+self-directed action rather than treatment refusal.
+
+The answer offered by defenders of the Protectionist Model is, at bottom, the
+act/omission distinction: death resulting from refusal of treatment is an omission;
+death resulting from MAiD is an act; acts are subject to different and higher moral
+scrutiny than omissions. This distinction has been extensively criticized in the
+philosophical literature\footnote{%
+  See Rachels (1975), ``Active and Passive Euthanasia,''
+  \textit{New England Journal of Medicine} 292(2): 78--80; Kamm (1993),
+  \textit{Morality, Mortality}, Vol.\ 1. The distinction is philosophically
+  contested; its legislative instantiation is historically contingent.}
+and, more importantly, does not track the moral intuitions it is supposed to capture:
+a patient who disconnects their own ventilator---an act---is treated legally as an
+exercise of refusal, not as self-harm.
+
+\subsection{The Informed Refusal Principle}
+
+Medicine already applies, without controversy, the principle that informed refusal is
+binding irrespective of prior utilization. A patient may refuse chemotherapy without
+a single treatment cycle. A patient may refuse dialysis without trial. The sole
+requirements are: understanding of the treatment and its realistic outcomes, and
+authentic refusal.
+
+\begin{policybox}[title={\sffamily\bfseries\small\color{C@accent}
+  The Informed Refusal Standard Applied to MAiD}]
+Under the Sovereignty Model, a MAiD applicant need not have attempted any psychiatric,
+pharmacological, or psychological intervention. They must: (1) know that such
+interventions exist; (2) understand their realistic outcomes and risks; and
+(3) having understood this, decline them. The clinical interview tests comprehension
+of alternatives, not compliance history. The question is not ``Have you tried an
+SSRI?'' but ``What do you understand about SSRIs, what outcomes are documented, and
+what led you to decline?''
+\end{policybox}
+
+The application of this principle to MAiD is not an extension of existing doctrine;
+it is a \textit{consistent application} of it. The inconsistency is in the current
+framework, which applies informed refusal universally except in the domain of
+self-directed death, where prior utilization of alternatives is treated as a
+prerequisite for autonomy.
+
+\subsection{The US Constitutional Landscape: Glucksberg and Beyond}
+
+For United States audiences, the constitutional argument requires engagement with
+\textit{Washington v.\ Glucksberg}, 521 U.S.\ 702 (1997), and \textit{Vacco v.\ Quill},
+521 U.S.\ 793 (1997). \textit{Glucksberg} held that no fundamental right to
+physician-assisted suicide exists under the substantive Due Process Clause, applying
+the ``deeply rooted in history and tradition'' test to a narrowly characterized right.
+\textit{Vacco} held that the equal protection clause does not require treating treatment
+refusal and assisted dying identically, because the act/omission distinction survives
+rational basis review.
+
+Neither holding forecloses the argument developed here, for three reasons.
+
+First, the Constitutional Pincer is not a substantive due process claim. It operates
+through the state-created-danger doctrine (\textit{DeShaney v.\ Winnebago County},
+489 U.S.\ 189 (1989) and its circuit-court development), which holds that where the
+state affirmatively creates or enhances a specific danger, a constitutional duty arises.
+The criminalization of reliable pharmacological exit is the state's affirmative act.
+The protected interest implicated---bodily integrity---is not novel: \textit{Cruzan}
+(1990) recognized it as a liberty interest under the Fourteenth Amendment.
+
+Second, \textit{Glucksberg}'s ``deeply rooted'' test was applied to a narrowly framed
+right. The post-\textit{Obergefell} Court has applied a broader framing to dignity-based
+liberty interests. Bodily integrity is unambiguously deeply rooted; the Pincer argues
+that this established interest is at stake, not a new one.
+
+Third, \textit{Vacco}'s rational basis for the act/omission distinction---that ``the
+disease kills'' in treatment refusal while ``the drug kills'' in assisted dying---is
+undermined by the Causation Fiction: when a stable patient orders a ventilator removed,
+the immediate cause of death is the active removal step. If the factual premise of a
+rational basis cannot survive scrutiny, the rational basis fails.
+
+For US legislative advocacy, the constitutional path is supplementary: the framework is
+designed primarily for legislative adoption through state Death with Dignity reform,
+which does not require \textit{Glucksberg} to be overruled.
+
+\subsection{Procedural Versus Substantive Autonomy}
+
+A persistent theoretical objection, advanced particularly within feminist relational
+autonomy theory, holds that preferences formed under conditions of poverty, isolation,
+or inadequate social support may not be ``authentically one's own'' even when all formal
+capacity criteria are met.\footnote{%
+  See Mackenzie and Stoljar (2000), eds., \textit{Relational Autonomy: Feminist
+  Perspectives on Autonomy, Agency, and the Social Self} (Oxford University Press);
+  McLeod (2002), \textit{Self-Trust and Reproductive Autonomy} (MIT Press). Relational
+  autonomy theorists argue that autonomy is constituted through social relations and
+  cannot be assessed independently of the conditions that enable or constrain it.}
+This challenge has genuine philosophical force and cannot be dismissed.
+
+The Sovereignty Model responds by adopting a \textbf{procedural} standard of autonomy
+rather than a \textbf{substantive} one. Procedural autonomy is concerned with the
+quality of the decision-making process: Was it free from coercion? Was the person
+adequately informed? Was the preference stable and consistent? Substantive autonomy
+requires additionally that the content of the decision conform to what a fully flourishing
+or authentically situated person would choose.
+
+Substantive autonomy requirements generate the very paternalism this framework critiques.
+They allow evaluators to override preferences that are procedurally valid but substantively
+inconsistent with the evaluator's vision of the good life. Applied in this domain, a
+substantive standard would hold that a preference for death formed under conditions of
+poverty or inadequate care cannot be authentic---but this is precisely the condition in
+which poor and disabled people find themselves, and overriding their preferences on this
+ground reinstates the coercive authority of the state they are subject to.
+
+The procedural standard avoids this trap. The forcing function's mandatory documentation
+of structural conditions is the framework's substantive answer to the relational concern:
+it makes the conditions that produce the preference politically visible and actionable,
+without substituting the state's judgment about authentic preference for the individual's
+own.
+
+\subsection{Capability Does Not Create Obligation}
+
+A distinct objection to the Sovereignty Model holds that persons have obligations to
+others---family members, dependents, communities, society---that prohibit exit. This
+objection treats the person as a public asset: their capabilities and relationships
+create claims on their continued existence that override autonomous preference.
+
+The objection is structurally identical to the claim that a worker's value to their
+employer creates a duty to remain employed. Applied to bodily existence, it asserts
+that a person's relational and social value functions as a statutory chain on the
+exercise of self-determination. This cannot be the correct account of the relationship
+between social obligation and individual rights in liberal theory. The fact that a
+person \textit{can} contribute does not generate a duty to do so; and the intensity
+of others' desire for continued presence does not, without more, create a claim against
+the person's self-determination.\footnote{%
+  This argument has a Kantian counterpart: the categorical prohibition on treating
+  persons merely as means. Applied here, it cuts against the objection: to compel
+  continued existence for others' benefit is precisely to treat the person as a means
+  to others' ends.}
+
+% ============================================================
+\section{The Two-Stage Capacity Assessment}
+% ============================================================
+
+\subsection{Stage 1: Decisional Capacity}
+
+Decisional capacity, as understood in the clinical ethics literature following
+Appelbaum and Grisso (1988),\footnote{%
+  Appelbaum, P.S., \& Grisso, T. (1988). Assessing patients' capacities to consent
+  to treatment. \textit{New England Journal of Medicine} 319(25): 1635--1638.}
+comprises four functional components: understanding of relevant information,
+appreciation of how the information applies to one's situation, reasoning about
+options, and expression of a consistent choice.
+
+The Sovereignty Model applies these four components to MAiD assessment as follows:
+
+\begin{description}
+  \item[Understanding] The applicant understands that death is permanent and
+    irreversible, and that the provision being sought will produce it.
+  \item[Appreciation] The applicant understands what the documented alternatives offer
+    and what declining them means for their situation. This is comprehension of
+    application, not endorsement of the alternatives' value.
+  \item[Reasoning] The applicant can articulate a coherent account of the relationship
+    between their situation, their understanding of alternatives, and their preference.
+    This is not a requirement for philosophical sophistication; it is a requirement
+    for internal coherence.
+  \item[Consistency] The preference is stable across the mandatory assessment period
+    and across multiple evaluations. Situational responses to transient conditions
+    do not satisfy this element.
+\end{description}
+
+\subsection{Stage 2: Process Comprehension}
+
+Stage~2 assesses whether the applicant understands why the procedural safeguards exist.
+This stage has both diagnostic and substantive significance.
+
+\textit{Diagnostic significance:} The 90-day mandatory assessment period is structurally
+incompatible with impulsive or crisis-driven decision-making. A person whose preference
+is generated by acute crisis will rarely sustain engagement with a multi-month
+bureaucratic procedure involving multiple independent evaluations. The process
+differentiates stable preference from transient reaction more reliably than any single
+clinical instrument.\footnote{%
+  This claim is supported by the empirical literature on the time-course of suicidal
+  crises. The acute crisis state is typically transient (hours to days in the acute
+  phase; Jobes (2016) documents resolution patterns in the CAMS framework across
+  structured clinical encounters). The CAMS framework explicitly distinguishes acute
+  and chronic suicidal ideation as qualitatively different clinical phenomena. Chronic
+  stable ideation surviving structured multi-week assessment is not equivalent to acute
+  crisis. See Jobes, D.\,A. (2016), \textit{Managing Suicidal Risk: A Collaborative
+  Approach} (2nd ed., Guilford Press); Jobes et al.\ (2017), ``CAMS versus treatment
+  as usual: A retrospective study with suicidal outpatients,'' \textit{Psychiatric
+  Services} 68(1): 62--67. The chronobiology of suicidal ideation also supports this:
+  intensity of ideation exhibits circadian patterning and typically peaks and recedes
+  in hours-to-days cycles, making 90-day stability across multiple independent encounters
+  a clinically significant discriminator.}
+
+\textit{Substantive significance:} Genuine decisional capacity includes the ability to
+understand one's own epistemic situation---to recognize that one's current state might
+affect one's judgment, and to accept protective mechanisms accordingly. A person who
+has authentic capacity but refuses to engage with safeguards designed to protect
+against the failure of that capacity is exhibiting a form of epistemic self-certainty
+that is itself a contraindication for the autonomous decision-making the framework
+is designed to recognize.
+
+% ============================================================
+\section{Principal Philosophical Objections}
+% ============================================================
+
+\subsection{The Depressive Incapacity Objection}
+
+The most targeted objection to extending MAiD eligibility to persons with
+treatment-resistant depression holds that such persons cannot satisfy the
+``appreciation'' criterion for decisional capacity, because hopelessness functions
+as a cognitive filter that renders alternatives subjectively unavailable even when
+they are formally understood.\footnote{%
+  See Charland (2008), ``Decision-making capacity,'' in
+  \textit{Stanford Encyclopedia of Philosophy}; Sullivan and Youngner (1994),
+  ``Depression, competence, and the right to refuse lifesaving medical treatment,''
+  \textit{American Journal of Psychiatry} 151(7): 971--978.}
+
+This objection has a genuine philosophical core. The concern is that the formal
+satisfaction of the ``appreciation'' criterion---being able to articulate what
+the alternatives offer---is undermined by a depressive phenomenology in which
+those alternatives are experienced as inaccessible regardless of their objective
+availability. If this is correct, then a preference that formally survives informed
+disclosure may not represent authentic autonomous preference in the relevant sense.
+
+The Sovereignty Model's response proceeds on two levels.
+
+\textit{First, the objection proves too much.} If depressive phenomenology
+constitutively undermines the appreciation criterion, then persons with depression
+cannot satisfy informed consent requirements for any treatment decision---including
+the decision to pursue the very interventions the objection says they must try.
+But medicine does not currently hold that depression undermines informed consent
+generally. The depressive incapacity objection applies a stricter standard to the
+refusal of treatment than to its acceptance, encoding a preference for the
+state-favored outcome that is precisely the paternalism under criticism.
+
+\textit{First-and-a-half, the stronger constitutive version.} A more sophisticated version
+of the objection draws on Beck's cognitive model of depression (Beck, 1979): severe
+depression does not merely filter which alternatives \textit{feel} accessible---it
+systematically biases probability estimation, causal attribution, and evaluative
+processing at a level below verbal self-report, in ways that may not be corrected by
+awareness of the bias.\footnote{%
+  Beck, A.\,T. (1979). \textit{Cognitive therapy of depression}. Guilford Press.
+  The cognitive triad (negative views of self, world, future) and related distortions
+  (overgeneralization, catastrophizing, arbitrary inference) operate on the application
+  of information to the self, not merely on its formal understanding.}
+A patient can accurately state that SSRIs have a documented response rate while applying
+that probability to their own case through a distorting lens that is invisible to the
+structured interview.
+
+This version of the objection has genuine force. The correct response is not to deny
+it but to recognize what it actually warrants: \textbf{heightened scrutiny for this
+specific cognitive dimension---not categorical exclusion.} The assessment protocol can
+be structured to probe whether the applicant's reasoning survives counter-evidence
+presentation in session: presenting disconfirming information and assessing whether
+probability estimates update appropriately. A patient whose reasoning demonstrably
+adjusts to new information satisfies the appreciation criterion. Fixed, evidence-resistant
+probability estimates warrant further evaluation. This is more clinically targeted than
+categorical exclusion, more honest about the risk, and consistent with how comparable
+high-stakes competency determinations already operate.
+
+\textit{Second, the objection misdescribes the appreciation criterion.} Appreciation
+does not require that the applicant \textit{feel} the alternatives to be viable.
+It requires that they \textit{understand} what the alternatives offer. A preference
+that survives full informed disclosure---even if the applicant does not experience
+hope that the alternatives would succeed---is the operationalization of capacity
+as the clinical literature defines it. To require, additionally, that the applicant
+experience hope is to import a positive psychological requirement that has no basis
+in the capacity doctrine. It also converts hopelessness from a symptom that the
+assessment process must attend to into a permanent disqualifier that can never be
+overcome---a result that makes a diagnosis into a lifetime exclusion from
+self-determination.\footnote{%
+  Donnelly and Campbell (2024) make a similar argument in the context of MAiD
+  for persons with primary psychiatric conditions: ``The appreciation criterion
+  is satisfied by demonstrated comprehension, not by demonstrated optimism.''
+  \textit{Journal of Medical Ethics} 50(3): 188.}
+
+\subsection{The Disability Rights Critique}
+
+\subsubsection{The Critique Stated}
+
+The disability rights critique, as advanced by DAWN Canada (2023) and the UN Special
+Rapporteur on the Rights of Persons with Disabilities (2019), holds that expanding
+MAiD eligibility to non-terminal cases---particularly where socioeconomic deprivation
+is a documented driver---does not extend autonomy but normalizes death as a state
+response to policy failure. Health Canada's 2024 data lends empirical weight to this
+concern: 61.5\% of Track~2 recipients reported disability; Track~2 recipients are
+modestly more likely to reside in lower-income neighborhoods than Track~1 recipients.
+
+\subsubsection{What the Critique Gets Right}
+
+The disability rights critique correctly identifies a real phenomenon. Some proportion
+of MAiD uptake in expanded eligibility jurisdictions is attributable, at least in part,
+to the failure of social support systems rather than to irremediable medical conditions.
+This is not anomalous; it is what the data shows. Any honest engagement with expanded
+MAiD eligibility must acknowledge it.
+
+\subsubsection{Where the Critique Fails}
+
+The Protectionist conclusion---restrict eligibility as the mechanism for compelling
+social investment---fails on two grounds.
+
+First, it is empirically unsupported. Restrictive eligibility frameworks have governed
+most jurisdictions for decades. In those same decades, disability supports have been
+chronically underfunded, social housing stocks have declined, and psychiatric
+infrastructure has deteriorated. The Protectionist position has not produced the
+dignified conditions its defenders claim it would compel. There is no mechanism by
+which restricting MAiD access translates into political pressure for better social
+provision.
+
+Second, it substitutes one coercion for another. To override the expressed autonomous
+preference of a person with intact decisional capacity on the grounds that the state
+disapproves of the conditions producing that preference is precisely the paternalistic
+substitution of institutional judgment for personal agency that disability rights
+advocacy has correctly opposed in every other domain. Protecting disabled people from
+their own autonomous choices, on the basis that those choices might be influenced by
+inadequate conditions, is a form of protective paternalism that the disability rights
+tradition rejects as a matter of foundational principle.
+
+\subsubsection{The Forcing Function as Structural Response}
+
+The Sovereignty Model's response to the disability rights concern is structural rather
+than procedural. The mandatory socioeconomic documentation requirement---by which
+administering authorities must formally report to relevant government ministries where
+inadequate support is identified as a driver of MAiD provisions---transforms what is
+currently an invisible outcome into a politically legible public record. Aggregated
+across a population, this record functions as a structural incentive for social
+investment that the Protectionist position cannot create.\footnote{%
+  The argument is structurally analogous to mandatory impact assessment requirements
+  in environmental law: by requiring formal documentation of harm as a condition of
+  proceeding with an otherwise permitted activity, the system creates a political
+  mechanism for holding responsible parties accountable that would not otherwise exist.}
+
+\subsection{The Regret Objection}
+
+A recurring objection holds that MAiD decisions are irreversible, and that a future
+self---one who might have recovered, adapted, or found conditions changed---will have
+no recourse. On this ground, we should override present autonomous preference to protect
+the person's future interests.
+
+The objection collapses under three related pressures.
+
+\subsubsection{The Non-Existence Problem}
+
+If the decision is carried out, there is no future self to experience regret. The
+objection requires a surviving subject who regrets not surviving---a contradiction in
+terms. The Epicurean point applies: ``When death is, I am not; when I am, death is
+not.'' The regret frame is only coherent on the assumption that a perspective persists
+from which the completed death is experienced as a loss. Death forecloses that
+perspective. The object of protection in the regret argument is not a real future person;
+it is a counterfactual construction.
+
+\subsubsection{The Personal Identity Problem}
+
+Even granting for argument's sake that a counterfactual future self ``would have
+existed,'' there is a prior question: in what sense is that future person the same
+person as the one making the present decision? Parfit's analysis establishes that
+personal identity over time is not a deep fact but a matter of degree and relation.\footnote{%
+  Parfit, D. (1984). \textit{Reasons and Persons}. Oxford University Press. Part~III.
+  On Parfit's reductionist view, what matters in survival is psychological continuity
+  and connectedness, not identity itself. This analysis undermines the claim that the
+  present person ``owes'' deference to the preferences of a counterfactual future person
+  sufficiently distinct to have different interests.}
+The counterfactual future self---whose existence is contingent on the present decision
+being overridden---is sufficiently distinct from the present person that their
+hypothetical preferences do not automatically generate a binding claim on present
+autonomous choice. To say otherwise is to assert that present persons are obligated to
+defer to the preferences of possible future persons---a position with no principled
+stopping point.
+
+\subsubsection{The Consistency Argument}
+
+The non-experienceable-regret standard is not applied to any other irreversible medical
+decision. A patient who refuses amputation and dies from gangrene is not told to wait
+because a future amputee self would have been fine. A patient who declines life-saving
+surgery is not overridden on the ground that their future self would have survived and
+been grateful. The selective application of the regret argument to exit decisions reveals
+that it is not a principle at all---it is an aesthetic response to a particular category
+of irreversible decision that the state finds morally distressing.
+
+If the non-experienceable-regret standard were applied consistently, it would overturn
+a substantial proportion of all high-stakes medical decision-making. No serious legal
+or ethical framework proposes this. The selectivity of the application is itself evidence
+that the objection is not doing the work its proponents claim.
+
+The coherent version of the regret concern---decisions made in \textit{transient} states
+the person themselves would not endorse when stable---is already addressed by the
+two-stage assessment, the 90-day filter, and the preference stability requirement.
+
+\subsection{The Slippery Slope Argument}
+
+The slippery slope objection holds that capacity-based eligibility will lead to
+progressive eligibility expansion that cannot be controlled---that ``capacity only''
+becomes, in practice, ``effectively anyone.''
+
+The empirical basis for this objection is weak. Belgium and the Netherlands have
+operated under broad eligibility frameworks, including psychiatric cases, for over
+two decades. Neither has experienced the predicted exponential expansion or collapse
+of procedural safeguards. Utilization has grown modestly; the demographics of
+recipients have shifted; procedural requirements have been refined in response to
+specific case concerns. The slippery slope has not materialized in the jurisdictions
+where it was most confidently predicted.
+
+The objection also proves too much. Applied consistently, it would prohibit any
+extension of any right on the grounds that extension is inherently unlimited. The
+answer is procedural architecture, not categorical prohibition---and this framework
+provides substantial procedural architecture.
+
+% ============================================================
+\section{Systemic Consequences: The Forcing Function}
+% ============================================================
+
+The most significant implication of the Sovereignty Model extends beyond individual
+eligibility to the political economy of social provision.
+
+\subsection{The Documentation Mechanism}
+
+Under the Sovereignty Model, where socioeconomic deprivation is identified as a
+driver of MAiD preference, the administering authority is required to formally
+document and report this to the relevant government ministry. This is not a
+discretionary clinical note; it is a statutory obligation with enforcement
+consequences.
+
+The political significance of this requirement is considerable. Currently, when a
+person in inadequate conditions is denied MAiD access and continues living in
+those conditions, that outcome generates no formal record. When they eventually
+die by other means, the causal chain between policy failure and death is severed.
+The state is never held accountable, because the accountability mechanism does
+not exist.
+
+Under the Sovereignty Model, deaths attributable in part to inadequate social
+provision become a matter of documented public record: citable, aggregable,
+politically attributable. The annual public reporting requirement makes this record
+visible. The political cost of that visibility creates structural incentive for
+social investment.
+
+\subsection{The Therapeutic Relationship}
+
+When the patient possesses an enforceable right to exit, the clinician is
+relieved of the coercive power of custodial retention. They cannot function as a
+jailer mandating biological continuity. They must instead become an ally working
+to make the patient's life subjectively worth continuing. The therapeutic
+relationship shifts from custodial to restorative---from preventing death as
+an administrative outcome to incentivizing life as a collaborative project. This
+is a more honest, and more clinically effective, orientation.
+
+\subsection{Correction by Consent}
+
+It must be acknowledged that the Sovereignty Model will result in some deaths that
+would not have occurred under a more restrictive framework. This is the price of
+treating adult sovereignty as genuine rather than conditional. The alternative is
+a managed population of people who remain alive because the exit is locked---people
+whose continued existence is compelled rather than chosen. That is not a dignified
+social arrangement. A society whose members remain by choice, not by conscription,
+is a more honest one; and one with a structural incentive to ensure that the choice
+to remain is genuinely available in conditions of dignity.
+
+% ============================================================
+\section{Conclusion}
+% ============================================================
+
+The Protectionist Model that governs current MAiD frameworks rests on two criteria---
+terminal diagnosis and suffering legibility---that are inconsistent with the informed
+refusal doctrine operative everywhere else in medical law, inconsistent with the
+jurisprudence of bodily self-determination, and unsupported by the empirical evidence
+from jurisdictions that have adopted broader frameworks.
+
+The Sovereignty Model proposed here replaces these criteria with the single criterion
+of decisional capacity, administered through a rigorous two-stage assessment and
+mandatory waiting period, with robust procedural safeguards against coercion and a
+mandatory documentation requirement that transforms state failure into politically
+legible public record.
+
+The argument does not require that death be good, or that autonomous preference for
+death be morally admirable, or that life be anything other than overwhelmingly worth
+living for the vast majority of people in the vast majority of circumstances. It
+requires only that the decision belong to the person whose life it is---and that the
+conditions under which they make that decision be honest, documented, and subject to
+political accountability.
+
+The door must stand unlocked. What happens next is, finally, a matter of genuine choice.
+
+% ─────────────────────────────────────────────────────────────
+\bigskip
+\section*{References}
+\addcontentsline{toc}{section}{References}
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{0pt}
+\small
+
+Appelbaum, P.\,S., \& Grisso, T. (1988). Assessing patients' capacities to consent to
+treatment. \textit{New England Journal of Medicine}, 319(25), 1635--1638.
+
+Beck, A.\,T. (1979). \textit{Cognitive therapy of depression}. Guilford Press.
+
+Beauchamp, T.\,L., \& Childress, J.\,F. (2019). \textit{Principles of biomedical ethics}
+(8th ed.). Oxford University Press.
+
+\textit{Carter v.\ Canada (Attorney General)}, 2015 SCC 5. Supreme Court of Canada.
+
+Charland, L.\,C. (2008). Decision-making capacity.
+\textit{Stanford Encyclopedia of Philosophy} (Fall 2020 ed.).
+Stanford: Metaphysics Research Lab.
+
+\textit{Cruzan v.\ Director, Missouri Department of Health}, 497 U.S.\ 261 (1990).
+
+\textit{DeShaney v.\ Winnebago County Department of Social Services}, 489 U.S.\ 189 (1989).
+
+DAWN Canada. (2023). \textit{MAiD and the inadequacy of social supports:
+A disability rights analysis}. Ottawa: Disability Action Working Network Canada.
+
+Donnelly, M., \& Campbell, A. (2024). Decisional capacity and the limits of
+paternalism in assisted dying law. \textit{Journal of Medical Ethics}, 50(3), 182--191.
+
+Drew, B.\,L. (2001). Self-harm behavior and no-suicide contracting in psychiatric
+inpatient settings. \textit{Archives of Psychiatric Nursing}, 15(3), 99--106.
+
+Health Canada. (2025). \textit{Sixth annual report on medical assistance in dying in
+Canada} (2024 data). Ottawa: Health Canada.
+
+Jobes, D.\,A. (2016). \textit{Managing suicidal risk: A collaborative approach}
+(2nd ed.). Guilford Press.
+
+Jobes, D.\,A., et al. (2017). CAMS versus treatment as usual: A retrospective study with
+suicidal outpatients. \textit{Psychiatric Services}, 68(1), 62--67.
+
+Kamm, F.\,M. (1993). \textit{Morality, mortality: Vol.~1. Death and whom to save from it}.
+Oxford University Press.
+
+Mackenzie, C., \& Stoljar, N. (Eds.). (2000). \textit{Relational autonomy: Feminist
+perspectives on autonomy, agency, and the social self}. Oxford University Press.
+
+McLeod, C. (2002). \textit{Self-trust and reproductive autonomy}. MIT Press.
+
+\textit{Malette v.\ Shulman} (1990), 72 O.R.\ (2d) 417 (Ontario Court of Appeal).
+
+Ontario Office of the Chief Coroner. (2022--2025).
+\textit{Reviews of MAiD cases involving socioeconomic drivers}. Toronto.
+
+Parfit, D. (1984). \textit{Reasons and persons}. Oxford University Press.
+
+Rachels, J. (1975). Active and passive euthanasia.
+\textit{New England Journal of Medicine}, 292(2), 78--80.
+
+\textit{Re B (Adult: Refusal of Medical Treatment)} [2002] 2 All ER 449 (England and Wales).
+
+\textit{Re T (Adult: Refusal of Treatment)} [1992] 4 All ER 649 (England and Wales).
+
+Silvers, A. (1998). Formal justice. In A. Silvers, D. Wasserman, \& M. Mahowald,
+\textit{Disability, difference, discrimination} (pp.\ 13--145). Rowman \& Littlefield.
+
+Stanford, E.\,J., Goetz, R.\,R., \& Bloom, J.\,D. (1994). The no harm contract in the
+emergency assessment of suicidal risk. \textit{Journal of Clinical Psychiatry},
+55(8), 344--348.
+
+Sullivan, M.\,D., \& Youngner, S.\,J. (1994). Depression, competence, and the right to
+refuse lifesaving medical treatment. \textit{American Journal of Psychiatry},
+151(7), 971--978.
+
+\textit{Washington v.\ Glucksberg}, 521 U.S.\ 702 (1997).
+
+\textit{Vacco v.\ Quill}, 521 U.S.\ 793 (1997).
+
+United Nations Special Rapporteur on the Rights of Persons with Disabilities. (2019).
+\textit{Report on autonomy, legal capacity, and medical assistance in dying}.
+Geneva: UN Human Rights Council.
+
+\end{document}

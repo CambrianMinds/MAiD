@@ -1,0 +1,262 @@
+% ============================================================
+%  campaign.sty — Shared style for the MAiD policy suite
+%  Justin Bogner, 2026
+%  Usage: \usepackage{campaign} in each document
+%  Requires XeLaTeX
+% ============================================================
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{campaign}[2026/01/01 MAiD Policy Campaign Style]
+
+% ── Core ────────────────────────────────────────────────────
+\RequirePackage{fontspec}
+\RequirePackage{microtype}
+\RequirePackage{setspace}
+
+% ── Structure ───────────────────────────────────────────────
+\RequirePackage{titlesec}
+\RequirePackage{titletoc}
+\RequirePackage{fancyhdr}
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{threeparttable}
+\RequirePackage{enumitem}
+\RequirePackage{array}
+\RequirePackage{longtable}
+\RequirePackage{multirow}
+\RequirePackage{ragged2e}
+
+% ── Visual ──────────────────────────────────────────────────
+\RequirePackage{xcolor}
+\RequirePackage{mdframed}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\RequirePackage{graphicx}
+\RequirePackage{geometry}
+
+% ── Links & Footnotes ────────────────────────────────────────
+\RequirePackage[hidelinks, pdfnewwindow=true]{hyperref}
+\RequirePackage[hang, flushmargin]{footmisc}
+\setlength{\footnotemargin}{1.2em}
+
+% ─────────────────────────────────────────────────────────────
+%  FONTS
+% ─────────────────────────────────────────────────────────────
+\setmainfont{PT Serif}
+\setsansfont{PT Sans}
+\setmonofont{PT Mono}
+
+% ─────────────────────────────────────────────────────────────
+%  COLOR PALETTE (Modernized)
+% ─────────────────────────────────────────────────────────────
+\definecolor{C@accent}{HTML}{005A9C}      % A professional, modern blue
+\definecolor{C@text}{HTML}{333333}        % Dark gray for body text
+\definecolor{C@heading}{HTML}{1A1A1A}    % Near-black for major headings
+\definecolor{C@rule}{HTML}{DDDDDD}        % Light gray for rules
+\definecolor{C@lightbg}{HTML}{F7F7F7}      % Very light gray for box backgrounds
+\definecolor{C@warning}{HTML}{D9534F}      % Soft red for warnings
+\definecolor{C@warningbg}{HTML}{FFEBEE}    % Very light red for warning backgrounds
+\definecolor{C@midgray}{HTML}{555555}       % Mid-gray for less important text
+\definecolor{C@darkgray}{HTML}{333333}     % Alias for C@text
+\definecolor{C@rulegray}{HTML}{DDDDDD}     % Alias for C@rule
+
+% ─────────────────────────────────────────────────────────────
+%  PAGE GEOMETRY (default; override per doc if needed)
+% ─────────────────────────────────────────────────────────────
+\geometry{
+  letterpaper,
+  margin=1.1in,
+  top=1.0in,
+  bottom=1.1in,
+  headheight=22pt
+}
+\setstretch{1.25}
+
+% ─────────────────────────────────────────────────────────────
+%  SECTION FORMATTING (Modernized)
+% ─────────────────────────────────────────────────────────────
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+\titleformat{\section}
+  {\sffamily\Large\bfseries\color{C@heading}}
+  {{\color{C@accent}\thesection.}}{0.6em}{}[\vspace{0.8ex}{\color{C@rule}\rule{0.3\textwidth}{0.6pt}}]
+
+\titleformat{\subsection}
+  {\sffamily\large\bfseries\color{C@text}}
+  {\thesubsection}{0.5em}{}
+
+\titleformat{\subsubsection}
+  {\sffamily\normalsize\bfseries\itshape\color{C@midgray}}
+  {\thesubsubsection}{0.5em}{}
+
+\titlespacing*{\section}     {0pt}{3.0ex plus 1ex minus .2ex}{2.0ex plus .2ex}
+\titlespacing*{\subsection}  {0pt}{2.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% ─────────────────────────────────────────────────────────────
+%  PAGE STYLE
+% ─────────────────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{C@midgray}\@campaignheaderleft}
+\fancyhead[R]{\small\sffamily\color{C@midgray}\@campaignheaderright}
+\fancyfoot[C]{\small\sffamily\color{C@midgray}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{%
+  \hbox to\headwidth{\color{C@rule}\leaders\hrule height\headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0pt}
+
+% Commands to set per-document header text
+\newcommand{\@campaignheaderleft}{Autonomy, Capacity, and the Right to Exit}
+\newcommand{\@campaignheaderright}{Policy Suite — Bogner, 2026}
+\newcommand{\campaignheader}[2]{%
+  \renewcommand{\@campaignheaderleft}{#1}%
+  \renewcommand{\@campaignheaderright}{#2}%
+}
+
+% ─────────────────────────────────────────────────────────────
+%  TCOLORBOX ENVIRONMENTS (Modernized)
+% ─────────────────────────────────────────────────────────────
+\tcbset{
+  % Base style for all boxes
+  C@basebox/.style={
+    enhanced, breakable,
+    colback=white, colframe=C@rule,
+    boxrule=0.6pt,
+    arc=0pt,
+    left=10pt, right=10pt, top=8pt, bottom=8pt,
+    fontupper=\small,
+  },
+  % Policy box with a blue left bar
+  C@policy/.style={
+    C@basebox,
+    borderline west={2.5pt}{0pt}{C@accent},
+  },
+  % Warning box with a red left bar
+  C@objection/.style={
+    C@basebox,
+    borderline west={2.5pt}{0pt}{C@warning},
+  },
+  % Statute box with a light background
+  C@statute/.style={
+    C@basebox,
+    colback=C@lightbg,
+  },
+  % Key finding / data box
+  C@finding/.style={
+    C@basebox,
+    colframe=C@accent,
+    boxrule=1pt,
+  },
+}
+
+% Named environments
+\newenvironment{policybox}[1][]
+  {\begin{tcolorbox}[C@policy, #1]}
+  {\end{tcolorbox}}
+
+\newenvironment{objectionbox}[1][]
+  {\begin{tcolorbox}[C@objection, #1]}
+  {\end{tcolorbox}}
+
+\newenvironment{statutebox}[1][]
+  {\begin{tcolorbox}[C@statute, #1]}
+  {\end{tcolorbox}}
+
+\newenvironment{findingbox}[1][]
+  {\begin{tcolorbox}[C@finding, #1]}
+  {\end{tcolorbox}}
+
+% ─────────────────────────────────────────────────────────────
+%  LIST STYLES
+% ─────────────────────────────────────────────────────────────
+\setlist[itemize,1]{
+  leftmargin=1.4em,
+  label={\color{C@accent}\textbullet},
+  itemsep=3pt, parsep=0pt, topsep=4pt
+}
+\setlist[itemize,2]{
+  leftmargin=1.2em,
+  label={\color{C@midgray}\textendash},
+  itemsep=2pt, parsep=0pt, topsep=2pt
+}
+\setlist[enumerate,1]{
+  leftmargin=1.6em,
+  itemsep=4pt, parsep=0pt, topsep=4pt
+}
+\setlist[description,1]{
+  leftmargin=1.6em,
+  font=\sffamily\bfseries\color{C@text},
+  itemsep=4pt, parsep=0pt, topsep=4pt
+}
+
+% ─────────────────────────────────────────────────────────────
+%  CAMPAIGN COVER MACROS (Modernized)
+% ─────────────────────────────────────────────────────────────
+
+% \campaigntitle{Main Title}{Subtitle}{Document Type}{Author}{Date}
+\newcommand{\campaigntitle}[5]{%
+  \thispagestyle{empty}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colframe=C@accent,
+    boxrule=0pt,
+    borderline west={3pt}{0pt}{C@accent},
+    left=15pt, right=15pt, top=15pt, bottom=15pt,
+    ]
+    {\sffamily\Huge\bfseries\color{C@heading} #1}\par
+    \vspace{0.4em}
+    {\sffamily\large\itshape\color{C@midgray} #2}\par
+    \vspace{1.7em}
+    {\sffamily\small\color{C@midgray}
+      \begin{tabular}{@{}l l}
+        \textbf{Document:} & #3 \\
+        \textbf{Author:} & #4 \\
+        \textbf{Date:} & #5 \\
+      \end{tabular}
+    }\par
+  \end{tcolorbox}
+  \vspace{1.2em}%
+}
+
+% \suitenote — standard cross-reference to the suite
+\newcommand{\suitenote}{%
+  \begin{policybox}[title={\sffamily\bfseries\small\color{C@accent}%
+    Document Suite}]
+  \small This document is one of five in the \textit{Autonomy, Capacity,
+  and the Right to Exit} policy suite (Bogner, 2026). The \href{00_master_policy.pdf}{Master Policy
+  Packet} contains the complete philosophical argument, all data, and full
+  procedural architecture. Audience-specific briefs are available for
+  \href{01_legislative_brief.pdf}{Legislative}, \href{04_clinical_brief.pdf}{Clinical/Medical Ethics}, \href{03_academic_paper.pdf}{Academic}, and \href{02_advocacy_brief.pdf}{Advocacy} audiences.
+  \end{policybox}%
+  \medskip
+}
+
+% ─────────────────────────────────────────────────────────────
+%  SHARED TABLE HELPERS
+% ─────────────────────────────────────────────────────────────
+
+% Standard table header row style
+\newcommand{\thead}[1]{%
+  \bfseries\sffamily\color{white} #1%
+}
+\newcommand{\C@thead}[1]{%
+  \rowcolor{C@accent}%
+  {\sffamily\bfseries\small\color{white} #1}%
+}
+
+% ─────────────────────────────────────────────────────────────
+%  MISC
+% ─────────────────────────────────────────────────────────────
+\newcommand{\principle}[2]{%
+  \medskip
+  \noindent{\sffamily\bfseries\color{C@accent} #1}\quad #2\par
+  \medskip
+}
+
+\newcommand{\ie}{\textit{i.e.}\@\xspace}
+\newcommand{\eg}{\textit{e.g.}\@\xspace}
+\newcommand{\cf}{\textit{cf.}\@\xspace}
+
+\endinput

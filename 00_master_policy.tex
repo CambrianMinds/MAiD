@@ -1,0 +1,832 @@
+% ============================================================
+%  AUTONOMY, CAPACITY, AND THE RIGHT TO EXIT
+%  Master Policy Packet — Non-Terminal Medical Aid in Dying
+%  Justin Bogner, 2026
+%  Compile: xelatex 00_master_policy.tex (twice for TOC/refs)
+% ============================================================
+
+\documentclass[11pt, letterpaper]{article}
+
+% ── Core ────────────────────────────────────────────────────
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage[margin=1.15in, bottom=1.2in, top=1.1in, headheight=22pt]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% ── Fonts ───────────────────────────────────────────────────
+\setmainfont{PT Serif}
+\setsansfont{PT Sans}
+
+% ── Structure ───────────────────────────────────────────────
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{threeparttable}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+
+% ── Visual ──────────────────────────────────────────────────
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{graphicx}
+
+% ── Links ───────────────────────────────────────────────────
+\usepackage[hidelinks, colorlinks=false, pdfnewwindow=true]{hyperref}
+
+% ── Footnotes ───────────────────────────────────────────────
+\usepackage[hang, flushmargin]{footmisc}
+\setlength{\footnotemargin}{1.2em}
+
+% ─────────────────────────────────────────────────────────────
+%  COLOR PALETTE
+% ─────────────────────────────────────────────────────────────
+\definecolor{accent}{HTML}{1B3A6B}
+\definecolor{accentlight}{HTML}{2E5D9E}
+\definecolor{calloutbg}{HTML}{EAF0FB}
+\definecolor{calloutborder}{HTML}{2E5D9E}
+\definecolor{warningbg}{HTML}{FDF3E7}
+\definecolor{warningborder}{HTML}{C0622F}
+\definecolor{darkgray}{HTML}{2B2B2B}
+\definecolor{midgray}{HTML}{555555}
+\definecolor{rulegray}{HTML}{BBBBBB}
+
+% ─────────────────────────────────────────────────────────────
+%  SECTION FORMATTING
+% ─────────────────────────────────────────────────────────────
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+\titleformat{\section}
+  {\sffamily\large\bfseries\color{accent}\centering}
+  {\thesection.}{0.6em}{}[{\color{rulegray}\titlerule[0.5pt]}]
+
+\titleformat{\subsection}
+  {\sffamily\normalsize\bfseries\color{darkgray}}
+  {\thesubsection}{0.5em}{}
+
+\titlespacing*{\section}{0pt}{2.2ex plus 1ex minus 0.2ex}{1.2ex plus 0.2ex}
+\titlespacing*{\subsection}{0pt}{1.8ex plus 0.8ex}{0.6ex plus 0.1ex}
+
+% ─────────────────────────────────────────────────────────────
+%  PAGE STYLE
+% ─────────────────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{midgray} Autonomy, Capacity, and the Right to Exit}
+\fancyhead[R]{\small\sffamily\color{midgray} Master Policy Packet}
+\fancyfoot[C]{\small\sffamily\color{midgray}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{rulegray}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0pt}
+
+% ─────────────────────────────────────────────────────────────
+%  CALLOUT ENVIRONMENTS
+% ─────────────────────────────────────────────────────────────
+\tcbset{
+  policybox/.style={
+    enhanced, breakable,
+    colback=calloutbg, colframe=calloutborder,
+    boxrule=0.5pt, leftrule=4pt,
+    left=10pt, right=10pt, top=8pt, bottom=8pt,
+    arc=0pt, outer arc=0pt,
+    fontupper=\small,
+  },
+  warningbox/.style={
+    enhanced, breakable,
+    colback=warningbg, colframe=warningborder,
+    boxrule=0.5pt, leftrule=4pt,
+    left=10pt, right=10pt, top=8pt, bottom=8pt,
+    arc=0pt, outer arc=0pt,
+    fontupper=\small,
+  },
+  statutebox/.style={
+    enhanced, breakable,
+    colback=white, colframe=accent,
+    boxrule=0.8pt,
+    left=12pt, right=12pt, top=10pt, bottom=10pt,
+    arc=0pt, outer arc=0pt,
+    fontupper=\small\ttfamily,
+  }
+}
+
+% ─────────────────────────────────────────────────────────────
+%  LIST STYLES
+% ─────────────────────────────────────────────────────────────
+\setlist[itemize,1]{
+  leftmargin=1.4em, label={\color{accentlight}\textbullet},
+  itemsep=3pt, parsep=0pt, topsep=4pt
+}
+\setlist[enumerate,1]{
+  leftmargin=1.6em,
+  itemsep=4pt, parsep=0pt, topsep=4pt
+}
+
+% ─────────────────────────────────────────────────────────────
+%  METADATA
+% ─────────────────────────────────────────────────────────────
+\title{%
+  {\sffamily\LARGE\bfseries\color{accent}
+    AUTONOMY, CAPACITY, AND THE RIGHT TO EXIT}\\[0.6em]
+  {\large\itshape A Policy Framework for Non-Terminal Medical Aid in Dying}\\[0.4em]
+  {\normalsize\sffamily\color{midgray} Master Policy Packet — For Distribution to Legislative,
+    Clinical, Academic, and Advocacy Audiences}
+}
+\author{\sffamily\bfseries Justin Bogner}
+\date{\sffamily 2026}
+
+% ============================================================
+\begin{document}
+% ============================================================
+
+\maketitle
+\thispagestyle{empty}
+
+\vspace{0.5em}
+{\color{rulegray}\hrule height 0.5pt}
+\vspace{1.2em}
+
+% ── AUTHOR'S NOTE ────────────────────────────────────────────
+\begin{tcolorbox}[policybox, title={\sffamily\bfseries\small\color{accent} Author's Note}]
+This framework emerges from lived contradiction: at eighteen, I survived a serious suicide
+attempt with full intent and means. Nearly twenty years later, I choose life---not out of
+fear or social obligation, but because the conditions became tolerable.
+
+\medskip
+That trajectory does not invalidate the argument; it exposes the lie that forced preservation
+is benevolence. The state that resuscitates without consent does not save a life; it claims
+ownership of one. This paper insists the right to exit belongs to the person whose life it
+is. Only when the door stands unlocked does the choice to remain carry moral weight. Anything
+else is conscription.
+
+\medskip
+\textit{This packet is the source document for four audience-specific briefs: \href{01_legislative_brief.pdf}{Legislative},
+\href{04_clinical_brief.pdf}{Clinical/Medical Ethics}, \href{03_academic_paper.pdf}{Academic}, and \href{02_advocacy_brief.pdf}{Advocacy}. All derive from the argument presented here.}
+\end{tcolorbox}
+
+\vspace{1em}
+
+% ── TABLE OF CONTENTS ────────────────────────────────────────
+{
+\hypersetup{hidelinks}
+\tableofcontents
+}
+
+\newpage
+
+% ============================================================
+\section*{Executive Summary}
+\addcontentsline{toc}{section}{Executive Summary}
+% ============================================================
+
+Current Medical Aid in Dying (MAiD) frameworks predicate eligibility on terminal illness,
+irremediable suffering, or analogous threshold conditions. This paper argues that these
+criteria are philosophically insufficient and practically counterproductive. The operative
+criterion for eligibility should be \textbf{decisional capacity}---and nothing more.
+
+\medskip
+This framework proposes a shift from a \textbf{Protectionist Model}---which treats eligibility
+as a concession granted when suffering becomes sufficiently legible to clinicians and
+legislators---to a \textbf{Sovereignty Model} grounded in four claims:
+
+\begin{enumerate}
+  \item \textbf{Capacity is the only gate.} Suffering is a proxy; capacity is the
+    principle. A person without pain who has formed a settled, informed preference for
+    death presents an equal autonomous claim to one in persistent agony. The state has
+    no legitimate interest in ranking whose suffering is sufficiently legible.
+
+  \item \textbf{Process serves as the filter.} A rigorous two-stage assessment and
+    mandatory waiting period distinguishes crisis response from stable autonomous
+    preference. Procedure is not a barrier; it is the mechanism of verification.
+
+  \item \textbf{Capability does not create obligation.} An individual's value to
+    family, community, or society does not function as a statutory prohibition on exit.
+    Persons are not public assets. Continued existence is not a debt owed to the collective.
+
+  \item \textbf{The Right to Exit as Forcing Function.} An enforceable exit right
+    compels the state to treat livability as a deliverable rather than a platitude.
+    Where socioeconomic conditions drive MAiD uptake, those conditions become documented
+    public record. The moral and political cost of that record creates structural
+    incentive for investment in life. This is not advocacy for death; it is the most
+    consequential structural argument for dignified living.
+\end{enumerate}
+
+\begin{tcolorbox}[warningbox]
+\textbf{On the disability rights objection:} This framework directly engages, rather than
+dismisses, the critique advanced by organizations such as DAWN Canada and ADAPT. The
+principal concern---that expanding MAiD eligibility enables the state to offer death as a
+substitute for adequate supports---is treated as \emph{partially valid and structurally
+important}. The forcing function argument presented in Section~V is offered as the
+substantive answer to that concern, not a circumvention of it. See Section~IV for full
+engagement.
+\end{tcolorbox}
+
+\newpage
+
+% ============================================================
+\section{The Problem with Current Frameworks}
+% ============================================================
+
+\subsection{The Suffering Criterion}
+
+Jurisdictions that permit MAiD typically require proof of ``unbearable'' or ``intolerable''
+suffering. This framing conflates sympathy with rights. It suggests that a person must first
+be visibly broken before they are permitted to leave.
+
+The suffering criterion creates a perverse dynamic: the more articulately a person can describe
+their distress to an evaluator, the more likely they are to receive access. Conversely, a
+person who has formed a settled, informed, philosophically coherent preference for death---but
+who presents as calm and functional---may be denied on the grounds that their suffering is
+insufficiently demonstrable. This is not a clinical standard; it is a performance requirement.
+
+A more fundamental problem is definitional. ``Unbearable'' is not a clinical category. It is
+a subjective threshold that varies with individual psychology, cultural background, pain
+tolerance, and access to support services. To adjudicate on it requires evaluators to
+override the applicant's own report in favor of external assessment---precisely the
+paternalism this framework rejects.
+
+\subsection{The Terminal Illness Requirement}
+
+The United States model, operative in ten states and the District of Columbia, restricts
+eligibility to persons with a terminal prognosis of six months or fewer. This restriction
+has no coherent philosophical foundation.
+
+The relevant moral question is not \emph{how soon} a person will die, but whether they possess
+the autonomous capacity to determine when and how. A person with a terminal prognosis of
+five months is not meaningfully different, in terms of self-determination, from a person with
+a non-terminal but severely degenerative condition who will live twenty years in declining
+function. To treat them differently is to make a rights determination on the basis of
+prognosis rather than personhood.
+
+\subsection{International Comparators}
+
+\begin{table}[h]
+\centering
+\small
+\begin{threeparttable}
+\begin{tabularx}{\textwidth}{l X X X}
+\toprule
+\textbf{Jurisdiction} & \textbf{Eligibility} & \textbf{Suffering Req.?} & \textbf{Non-Terminal?} \\
+\midrule
+Canada (2026)
+  & Grievous \& irremediable condition; Track~2 for non-foreseeable death
+  & Yes
+  & Yes (Track~2; 732 provisions in 2024; 61.5\% disability)$^{\dagger}$ \\[4pt]
+United States
+  & Terminal ($\leq$6 months); 10 states + DC
+  & No
+  & No \\[4pt]
+Belgium / Netherlands
+  & Unbearable suffering including psychiatric
+  & Yes
+  & Yes (psychiatric review) \\[4pt]
+Switzerland
+  & Any (assisted suicide organizations)
+  & No
+  & Yes (existential cases) \\[4pt]
+\textbf{Proposed}
+  & \textbf{Decisional capacity only}
+  & \textbf{No}
+  & \textbf{Yes (stable preference)} \\
+\bottomrule
+\end{tabularx}
+\begin{tablenotes}
+  \footnotesize
+  \item[$\dagger$]
+    Health Canada, \textit{Sixth Annual Report on Medical Assistance in Dying}
+    (2024 data, released November 2025). Mental illness as sole underlying condition
+    delayed to March 2027. Track~2 year-over-year growth: 17\% from 625 (2023) to 732 (2024).
+\end{tablenotes}
+\end{threeparttable}
+\caption{MAiD Eligibility Models, 2026}
+\label{tab:comparators}
+\end{table}
+
+\subsection{Liability Theater}
+
+Psychiatric response to suicidal ideation frequently functions as institutional liability
+management rather than therapeutic care. The operational priority is avoiding documented
+responsibility for a death ``on our watch,'' not resolving the conditions that produced the
+crisis. The result is a sequence that is coercive in substance if not in name: involuntary or
+pressured hospitalization, coerced safety contracts of no demonstrated clinical value,
+premature discharge into the same unlivable conditions, and the restarting of the cycle.
+
+Biology persists; autonomy is suspended. The patient is held as a hostage to the provider's
+liability exposure and the state's moral discomfort with the existence of the preference.
+This is not a treatment model. It is an administrative loop designed to defer, not resolve.
+
+\newpage
+
+% ============================================================
+\section{The Philosophical Foundation}
+% ============================================================
+
+\subsection{Bodily Self-Determination}
+
+Medical jurisprudence across Western democracies has established, without serious remaining
+controversy, that competent adults may refuse any medical treatment---including life-sustaining
+treatment---without requiring justification, without being required to attempt it first, and
+without the consent of family members or treating clinicians. The foundation of this right
+is bodily self-determination: the principle that a person's physical existence is their own
+domain, not the state's.
+
+If this right is recognized---and it is, in law, in every relevant jurisdiction---then the
+question is not whether persons possess the right to determine the boundaries of their
+existence, but why that right is suspended the moment the determination is self-directed
+rather than treatment-directed. The moral logic that permits a patient to refuse a ventilator
+and die by suffocation also supports permitting that patient to choose a swifter and less
+distressing death by other means. The distinction the law currently draws is not principled;
+it is aesthetic.
+
+\subsection{The Informed Refusal Principle}
+
+Medicine already recognizes, without controversy, that a patient may decline any
+treatment---including life-sustaining treatment---without first attempting it. A patient may
+refuse chemotherapy without a single round. A patient may decline dialysis without trial.
+The sole requirement is that the refusal be \textit{informed}: the person must understand
+what the treatment is, what outcomes it realistically offers, and what declining means.
+
+This framework applies that principle consistently and without exception.
+
+An individual seeking MAiD assessment need not have attempted psychiatric treatment, exhausted
+pharmacological options, or completed a course of psychotherapy. They must know that these
+interventions exist, understand their realistic outcomes and risks, and---knowing this---decline
+them. The criterion is \textbf{informed awareness}, not \textbf{attempted compliance}.
+
+\begin{tcolorbox}[policybox]
+\textbf{The clinical interview's role under this framework:} The evaluating clinician tests
+comprehension, not compliance history. The relevant questions are not ``Have you tried an
+SSRI?'' but ``What do you understand about SSRIs, what outcomes do the literature suggest,
+and what led you to decline them?'' An honest, documented refusal following full disclosure
+is more epistemically transparent than a coerced trial producing performative compliance.
+\end{tcolorbox}
+
+\medskip
+Requiring prior exhaustion of treatment for psychiatric or existential cases imposes a double
+standard that medicine has abandoned everywhere else. It encodes a covert hierarchy: the
+state's preferred interventions become mandatory prerequisites for autonomy in the categories
+it deems ``weak-minded.'' This is not diligence. It is diagnostic disenfranchisement.
+
+\subsection{Capability Does Not Create Obligation}
+
+A persistent objection is that an individual's value to others---family, society, their
+professional community---prohibits their exit. This view is structurally identical to the
+claim that a person's labor value prohibits their resignation. Both treat the person as a
+resource to be retained by others' need rather than a subject with sovereign interest in
+their own existence.
+
+Relationships are vital. They are, for many people, primary reasons to remain. But they cannot
+function as statutory chains. The fact that a person \textit{can} contribute does not mean
+they \textit{must}. Continued existence is not a debt owed to the collective, to one's family,
+or to the state.
+
+\subsection{The Depressive Capacity Objection}
+
+A targeted form of the paternalist objection holds that persons with treatment-resistant
+depression cannot satisfy the ``appreciation of alternatives'' criterion for capacity,
+because hopelessness functions as a cognitive filter that makes alternatives appear
+unavailable even when they are formally understood.
+
+This objection deserves direct engagement. The informed refusal framework dissolves it by
+clarifying what appreciation requires. The question is not whether the person \emph{feels}
+the alternatives to be viable---this would make the capacity standard dependent on the
+very symptom being assessed---but whether they \emph{understand} what the alternatives are
+and what they offer.
+
+A preference that survives full informed disclosure is the operationalization of capacity.
+To permanently exclude persons with depressive histories on the grounds that their refusals
+cannot be trusted is to convert a diagnosis into a lifetime disqualifier. This is the
+paternalism this framework rejects, made explicit.
+
+\newpage
+
+% ============================================================
+\section{The Two-Stage Capacity Assessment}
+% ============================================================
+
+To distinguish authentic autonomous preference from crisis-state decision-making, this
+framework proposes a two-stage protocol with a mandatory assessment period.
+
+\subsection{Stage 1: Decisional Capacity}
+
+The evaluating clinician must assess and document that the applicant demonstrates:
+
+\begin{itemize}
+  \item \textbf{Understanding of consequences.} The applicant understands the permanent and
+    irreversible nature of death. This must be assessed, not assumed.
+
+  \item \textbf{Informed awareness of alternatives.} The applicant has received documented
+    presentation of all available alternatives---medical, psychiatric, financial, social,
+    palliative---and understands their realistic outcomes and associated risks. Prior
+    utilization of any alternative is \emph{not} required. Informed refusal of alternatives,
+    following full disclosure, must be respected.
+
+  \item \textbf{Absence of acute distortion.} The applicant is not in an active psychotic
+    state or transient crisis condition that materially undermines comprehension. This is a
+    state assessment, not a diagnostic exclusion: a person with a history of psychosis who
+    is currently stable is not disqualified.
+
+  \item \textbf{Preference stability.} The preference is stable across time and is not
+    reducible to a situational or episodic response to a transient condition. This is assessed
+    through the waiting period and multiple evaluations, not through a single interview.
+\end{itemize}
+
+\subsection{Stage 2: Process Comprehension}
+
+The applicant must demonstrate willingness to engage with the assessment process itself,
+including understanding \emph{why} the safeguards exist and accepting them as legitimate.
+This functions as a mechanical filter for impulsivity.
+
+A person in acute crisis will rarely tolerate a 90-day bureaucratic process with
+multiple independent evaluations. A person with a resolved, stable autonomous preference can.
+The process itself is evidence of resolution---not because endurance proves rationality, but
+because the capacity to engage with a structured procedure across time reflects precisely
+the stable, reflective orientation that distinguishes autonomous preference from reactive crisis.
+
+\begin{tcolorbox}[policybox]
+\textbf{Diagnostic logic of Stage 2:} A person who claims Stage~1 capacity while refusing
+to engage with Stage~2 process requirements likely fails Stage~1. Genuine understanding of
+why safeguards exist---as protections for the applicant, not obstacles---is itself a
+component of the comprehension required for autonomous decision-making.
+\end{tcolorbox}
+
+\newpage
+
+% ============================================================
+\section{Principal Objections and Responses}
+% ============================================================
+
+\subsection{The Disability Rights Critique}
+
+\begin{tcolorbox}[warningbox, title={\sffamily\bfseries\small\color{warningborder}
+  Objection — DAWN Canada, ADAPT, and related organizations}]
+Expanding MAiD eligibility, particularly to non-terminal and socioeconomically disadvantaged
+applicants, does not extend autonomy---it provides the state with a cheaper alternative to
+adequate supports. Disabled people, people experiencing poverty, and people who are isolated
+are not choosing death freely; they are choosing death because the state has failed to make
+life livable. An expanded eligibility framework legitimizes that failure by processing it
+as autonomous preference.
+\end{tcolorbox}
+
+\medskip
+\noindent\textbf{Response: The critique is partially correct, and that is precisely why this
+framework does not stop at expanding eligibility.}
+
+The disability rights organizations advancing this objection have identified a real phenomenon.
+Health Canada's 2024 data shows that Track~2 recipients are modestly more likely to reside
+in lower-income neighborhoods than Track~1 recipients, and that disability and social isolation
+are prominent documented drivers of ``intolerable suffering'' claims. The Ontario Chief
+Coroner's reviews have documented cases in which inadequate housing, income insufficiency, and
+care gaps appear as primary conditions motivating MAiD requests.
+
+This is not acceptable. The question is what follows from that finding.
+
+The Protectionist position---restrict access, close the exit door---does not resolve the
+underlying conditions. It adds legal coercion to material deprivation. The person who lacks
+housing, adequate care, and social connection, and who finds life intolerable as a result,
+is not made better off by being denied the right to act on that assessment. They are made
+worse off in a way that is now compelled by the state.
+
+The forcing function argument in Section~V of this paper is the substantive answer to the
+disability rights concern, not a deflection of it:
+
+\begin{enumerate}
+  \item Under the proposed framework, evaluators are \emph{required} to present all available
+    alternatives---housing, income support, disability services, community connection---with
+    sufficient specificity for genuine comprehension. This presentation must be documented.
+  \item Where an applicant cites inadequate access to these supports as a condition of their
+    preference, the administering authority is \emph{required} to transmit a formal report
+    to relevant government ministries documenting this as a driver of the provision.
+  \item That documentation creates a public record of state failure. Not a private administrative
+    note---a documentable, aggregable, politically legible record.
+\end{enumerate}
+
+The disability rights organizations are right that the state should not offer death as an
+alternative to adequate care. This framework makes that explicit and structural. Where they
+are wrong is in the conclusion: that the remedy is to remove the exit rather than to document,
+publicize, and politically weaponize the conditions that drive people toward it.
+
+The Protectionist Model has governed most jurisdictions for decades. In those same decades,
+housing supports have eroded, disability services have been underfunded, psychiatric wait
+times have grown. Closing the exit has not produced the dignified conditions its defenders
+claim it would compel. There is no evidence that coerced existence creates political pressure
+for better lives. There is evidence that documented, state-recorded deaths attributable to
+inadequate supports create that pressure.
+
+\subsection{The Slippery Slope Objection}
+
+The concern is that expanding eligibility criteria leads inevitably to expansion of the
+eligible population in ways that cannot be controlled---that ``capacity only'' becomes
+``effectively anyone.''
+
+This objection is empirically testable. The relevant data comes from Belgium and the
+Netherlands, which have operated under broad eligibility criteria---including psychiatric
+cases---for over two decades. Neither jurisdiction has experienced the predicted exponential
+expansion or the predicted collapse of safeguards. Utilization has grown modestly and
+measurably; the demographics of recipients have shifted somewhat; the procedural requirements
+have been tightened in response to specific case-by-case concerns.
+
+The slippery slope argument proves too much. Applied consistently, it would prohibit any
+extension of any right on the grounds that extension is logically unlimited. The answer is
+not to prohibit extension but to design the procedural architecture carefully---which this
+framework does.
+
+\subsection{The External Coercion Objection}
+
+The concern is that persons---particularly disabled people, elderly people, and people who
+experience themselves as burdens---may choose MAiD under subtle or explicit coercive pressure
+from family members, caregivers, or financial incentives.
+
+This is a legitimate concern and is addressed procedurally rather than by restricting
+eligibility:
+
+\begin{itemize}
+  \item Every assessment includes a confidential interview with a social worker or independent
+    advocate unaffiliated with the care team.
+  \item Financial and dependency circumstances are reviewed as a standard component.
+  \item Mandatory offer of independent legal assistance for advance planning.
+  \item Revocation is absolute and available until the final moment.
+\end{itemize}
+
+The coercion concern is an argument for robust process, not for categorical exclusion.
+Categorical exclusion on the basis that coercion \emph{might} be present is itself a coercive
+act: it overrides the expressed preference of the many to protect against the hypothetical
+victimization of the few.
+
+\newpage
+
+% ============================================================
+\section{Systemic Consequences: The Right to Exit as Forcing Function}
+% ============================================================
+
+The most profound implication of this framework is not the death of the individual but the
+reformation of the society that remains.
+
+\subsection{From Coercion to Alliance}
+
+In a system where the patient possesses the legal right to exit, the clinician loses the
+power of coercive retention. They cannot function as a custodial jailer mandating existence.
+Instead, the clinician must become an ally---working to make the patient's life subjectively
+worth continuing. Therapy shifts from preventing death as an administrative outcome to
+incentivizing life as a collaborative project. Custodial becomes restorative. This is not
+a small shift; it is a complete reorientation of the therapeutic relationship.
+
+\subsection{The Mandate for Livability}
+
+Health Canada's 2024 data already shows the dynamic in embryonic form: Track~2 provisions
+reached 732 in 2024, up 17\% year-over-year, with 61.5\% of recipients reporting disability.
+Total MAiD provisions reached 16,499 in 2024, representing 5.1\% of all Canadian deaths.
+Documented cases cite unaffordable housing, inadequate disability supports, and social
+isolation as core drivers. These are not anomalies. They are early signals.
+
+Under capacity-based eligibility, the signal becomes undeniable. The state must either
+document systemic abandonment as a cause of death or prevent it. If a citizen chooses MAiD
+because they lack housing or adequate care, the administering authority records that failure.
+Aggregated across a population, that record is a political instrument of the first order.
+
+\begin{tcolorbox}[policybox]
+\textbf{The Survivor's Dividend:} Resources reallocated to ensure that the choice to remain
+is supported by dignity, not merely permitted by default. The Right to Exit functions as a
+consumer protection standard for existence: the product must be good enough to retain the
+user, or the state must explain, on public record, why it was not.
+\end{tcolorbox}
+
+\subsection{Correction by Consent}
+
+It must be acknowledged directly: this framework will result in what may be termed a
+\textit{correction by consent}. Some individuals will choose to exit rather than wait for
+societal improvement that may not arrive in time for them. This is the price of a free
+society---and the price of having failed them earlier.
+
+The alternative is to compel their continued existence while continuing to fail them. That
+is not a moral position. It is a policy of managed despair with administrative gatekeeping.
+
+A society that remains by consent rather than by conscription is not a depleted society; it
+is a more honest one. And it is a society with an undeniable structural incentive to improve
+the conditions under which the consent to remain is given.
+
+\newpage
+
+% ============================================================
+\section{Procedural Architecture}
+% ============================================================
+
+\subsection{Mandatory Resource Presentation}
+
+Evaluators must present, in sufficient specificity for genuine comprehension, every realistic
+alternative: housing assistance, income support, disability services, community connection,
+palliative care, psychiatric intervention, peer support programs. Presentation must be
+documented. Referral must be offered and, if declined, that declination must be recorded with
+the applicant's stated reasons.
+
+Informed refusal of any alternative, once its nature and realistic outcomes are understood,
+must be respected without condition.
+
+\subsection{Waiting Periods as Diagnostic Instruments}
+
+A minimum assessment period of 90 days applies to all non-terminal applications. This period
+is not a delay tactic; it is a diagnostic instrument. A preference that cannot survive 90 days
+of reflection, multiple independent evaluations, and genuine engagement with alternatives is
+not the settled autonomous preference this framework is designed to recognize.
+
+The period serves a second function: it is the interval during which alternative supports
+may be arranged and tried. Persons who accept alternative support during this period may
+withdraw the application without prejudice or stigma at any point.
+
+\subsection{Independent Coercion Screening}
+
+Every assessment includes:
+
+\begin{itemize}
+  \item Confidential interview by a social worker or independent patient advocate unaffiliated
+    with the treating team and with no institutional stake in the outcome.
+  \item Structured review of financial circumstances, dependency relationships, and any
+    indicators of external pressure.
+  \item Mandatory offer of independent legal assistance for advance planning: wills, powers
+    of attorney, care directives.
+\end{itemize}
+
+\subsection{Documentation of Socioeconomic Drivers}
+
+Where an applicant identifies inadequate access to housing, income, disability supports,
+or social connection as a primary or contributing condition of their preference, the
+administering authority \textbf{must} transmit a confidential formal report to the relevant
+government ministry, documenting these conditions as a driver of the provision. This is not
+optional. This is the mechanism by which the forcing function operates.
+
+\subsection{Revocation}
+
+The right to revoke the application is absolute. It may be exercised at any point in the
+process, for any reason, without explanation, without stigma, and without effect on
+future access to services. No ``death day locked-in'' mechanism is permissible.
+
+\newpage
+
+% ============================================================
+\section{Model Statutory Language}
+% ============================================================
+
+The following provisions are offered as draft model language for legislative consideration.
+They are not jurisdiction-specific and require adaptation to local constitutional and
+statutory frameworks.
+
+\medskip
+
+\begin{longtable}{>{\bfseries\sffamily\small}p{3cm} p{10.5cm}}
+\toprule
+\textbf{\sffamily Provision} & \textbf{\sffamily Proposed Language} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+
+Eligible Person
+  & Any adult who demonstrates decisional capacity as assessed under this Act.
+    Terminal diagnosis and proof of suffering are not required. \\[6pt]
+
+Decisional Capacity
+  & The demonstrated ability to: (a)~understand the permanent and irreversible nature
+    of death; (b)~demonstrate informed awareness of available alternatives including
+    medical, psychiatric, financial, and social supports; (c)~express a preference
+    stable across the assessment period; and (d)~be free from acute psychotic or
+    crisis states that materially distort comprehension.
+    A history of psychiatric diagnosis does not constitute disqualification.
+    Stability is assessed at the time of evaluation. \\[6pt]
+
+Informed Refusal
+  & An applicant need not have utilized any alternative prior to application.
+    Documented informed awareness of alternatives and reasons for declining
+    them shall satisfy this element. Evaluators shall assess comprehension
+    of alternatives, not compliance history. \\[6pt]
+
+Assessment Period
+  & A minimum of 90 days from first application for non-terminal provisions.
+    Multiple independent evaluations are required within this period.
+    Applications may be withdrawn at any point without prejudice. \\[6pt]
+
+Coercion Screening
+  & Every application shall include: (a)~confidential assessment by an
+    independent social worker or patient advocate unaffiliated with the
+    care team; (b)~structured review of financial and dependency
+    circumstances; (c)~mandatory offer of independent legal assistance
+    for advance planning. \\[6pt]
+
+Socioeconomic Documentation
+  & Where an applicant identifies inadequate housing, income, disability
+    support, or social connection as a primary or contributing basis for
+    their preference, the administering authority shall transmit a formal
+    report to the relevant ministry documenting these conditions as a
+    driver of the provision. \\[6pt]
+
+Revocation
+  & The right to revoke is absolute, available without condition or
+    explanation until the moment of provision, and has no adverse effect
+    on future access to services or applications. \\[6pt]
+
+Clinician Conscience
+  & No clinician is required to participate in MAiD assessment or provision.
+    Conscientious objectors must provide timely referral to a willing
+    provider. Refusal to refer constitutes patient abandonment. \\[6pt]
+
+Standard of Proof
+  & Decisional capacity must be established by clear and convincing evidence
+    across the full assessment period, consistent with the standard applied
+    in guardianship and high-stakes competency determinations.
+    The burden rests on the assessment record. \\[6pt]
+
+Evaluator Disagreement
+  & Where independent evaluators reach divergent conclusions on capacity,
+    the matter is referred to an independent Clinical Ethics Committee
+    within fourteen days. Capacity requires reasoned concurrence of at
+    least two evaluators. Unresolved disagreement triggers administrative
+    review. \\[6pt]
+
+Review and Appeal
+  & Any applicant whose request is denied has the right to: (a)~a fresh
+    independent evaluation by a new panel within 30 days; (b)~expedited
+    administrative tribunal review; and (c)~judicial review of any adverse
+    tribunal decision. All denials must be in writing with reasoned findings.
+    The administering authority bears the burden of justification on review. \\
+
+\end{longtable}
+
+% ============================================================
+\section*{Conclusion: Life as an Opt-In System}
+\addcontentsline{toc}{section}{Conclusion}
+% ============================================================
+
+This is not advocacy for death.
+
+It is a refusal to treat adult sovereignty as conditional on suffering thresholds, clinical
+legibility, or social utility. The argument does not require that exit be easy; it requires
+that exit be possible---and that the conditions under which people choose to remain are
+documented, legible, and subject to political accountability.
+
+Bar the exit, and presence is conscription: silent, coerced, stripped of moral weight. Unlock
+it, and presence becomes deliberate affirmation. Every person who remains does so as a
+choice, not a default. That is the only condition under which the choice means anything.
+
+The alternative is gentler rhetoric concealing a rising body count that we already refuse to
+name honestly. Replace sanctity-of-life dogma with sovereignty of the living, or acknowledge
+that the dogma was always about the comfort of those who remain rather than the welfare of
+those who suffer.
+
+The door must stand unlocked. What happens next---individually, socially, politically---is
+then a matter of genuine choice. That is where moral life begins.
+
+\newpage
+
+% ============================================================
+\section*{References}
+\addcontentsline{toc}{section}{References}
+% ============================================================
+
+\begin{flushleft}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+Health Canada. (2025). \textit{Sixth Annual Report on Medical Assistance in Dying in
+Canada} (2024 data). Ottawa: Health Canada.
+
+\medskip
+Health Canada. (2023--2024). \textit{Track~2 case documentation and socioeconomic
+analyses}. Ottawa: Health Canada.
+
+\medskip
+Ontario Office of the Chief Coroner. (2022--2025). \textit{Reviews of MAiD cases
+involving socioeconomic drivers}. Toronto.
+
+\medskip
+United Nations Special Rapporteur on the Rights of Persons with Disabilities. (2019).
+\textit{Report on autonomy, legal capacity, and MAiD}. Geneva: UN Human Rights Council.
+
+\medskip
+Government of Canada. (2024). \textit{Bill C-7: An Act to amend the Criminal Code
+(medical assistance in dying)}. Ottawa: Parliament of Canada.
+
+\medskip
+Donnelly, M., \& Campbell, A. (2024). Decisional capacity and the limits of
+paternalism in assisted dying law. \textit{Journal of Medical Ethics}, 50(3), 182--191.
+
+\medskip
+Disability Action Working Network (DAWN) Canada. (2023). \textit{MAiD and the
+inadequacy of social supports: A disability rights analysis}. Ottawa: DAWN Canada.
+
+\medskip
+Beauchamp, T.~L., \& Childress, J.~F. (2019). \textit{Principles of Biomedical
+Ethics} (8th ed.). Oxford University Press.
+
+\medskip
+Carter v.\ Canada (Attorney General), 2015 SCC 5. Supreme Court of Canada.
+
+\end{flushleft}
+
+% ============================================================
+\end{document}
+% ============================================================
